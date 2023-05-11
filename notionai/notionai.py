@@ -7,7 +7,7 @@ import requests
 from notionai.enums import PromptTypeEnum, ToneEnum, TopicEnum, TranslateLanguageEnum
 
 MODEL = "openai-3"
-URL = "https://www.notion.so/api/v3/getCompletion"
+API_URL = "https://www.notion.so"
 
 
 class NotionAIBase(object):
@@ -18,20 +18,23 @@ class NotionAIBase(object):
         token: str,
         space_id: str,
         model: str = MODEL,
+        api_url: str = API_URL,
     ) -> None:
         """Init NotionAI
         Args:
             token (str): Notion token_v2
             space_id (str): Notion workspace id
             model (str, optional): AI model. Default to openai-1.1
+            api_url (str, optional): Notion api base url
             stream (bool, optional): use stream result. Defaults to False.
             pageTitle (str, optional): Title for your content. Defaults to PAGE_TITLE.
         """
         self.token = token
         self.space_id = space_id
         self.model = model
+        self.api_url = api_url
         self.is_space_permission = False
-        self.url = URL
+        self.url = f"{self.api_url}/api/v3/getCompletion"
 
     def _request(self, content: dict) -> str:
         payload = {
@@ -81,10 +84,11 @@ class NotionAIBase(object):
 
 class NotionAI(NotionAIBase):
     @classmethod
-    def get_spaces(cls, token: str) -> list[dict]:
+    def get_spaces(cls, token: str, api_url: str = API_URL) -> list[dict]:
         """Get all spaces
         Params:
             token (str): Notion token_v2
+            api_url (str): Notion api base url
 
         Returns:
             list[dict]: list of spaces with id and name
@@ -94,7 +98,7 @@ class NotionAI(NotionAIBase):
             {"id": "space_id_2", "name": "space_name"}
         ]
         """
-        url = "https://www.notion.so/api/v3/getSpaces"
+        url = f"{api_url}/api/v3/getSpaces"
         r = requests.post(url, headers=cls._build_headers(token))
         if r.status_code != 200:
             raise ValueError("Cannot get spaces")
