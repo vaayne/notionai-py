@@ -1,6 +1,11 @@
 # Changelog
 
-## v0.1.3 - 20230=04-09
+## v0.1.4 - 20230-05-12
+### Added
+- support proxy host for notion
+
+
+## v0.1.3 - 20230-04-09
 ### Added
 - support old version python like python3.8
 
