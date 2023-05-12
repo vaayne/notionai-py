@@ -100,6 +100,20 @@ print(spaces)
 
 ```
 
+**Note2: Now supports custom api proxy links **
+
+```python
+import os
+from notionai import NotionAI
+TOKEN = os.getenv("NOTION_TOKEN")
+SPACE_ID = os.getenv("NOTION_SPACE_ID")
+API_URL = "https://xxx.xxx.xxx"  # this is your custom proxy links
+
+ai = NotionAI(TOKEN, SPACE_ID, api_url=API_URL)
+res = ai.blog_post("write a blog about the meaning of life")
+print(res)
+```
+
 
 #### Examples
 
