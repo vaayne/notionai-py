@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.5 - 20230-10-07
+### Fixed
+- fix `ValidationError` by upgrade model to `openai-4`
+
+### Improvement
+- use [rye ](https://github.com/mitsuhiko/rye)to manage python venv
+
+
 ## v0.1.4 - 20230-05-12
 ### Added
 - support proxy host for notion

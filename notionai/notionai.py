@@ -6,7 +6,7 @@ import requests
 
 from notionai.enums import PromptTypeEnum, ToneEnum, TopicEnum, TranslateLanguageEnum
 
-MODEL = "openai-3"
+MODEL = "openai-4"
 API_URL = "https://www.notion.so"
 
 
