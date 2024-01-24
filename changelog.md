@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.6 - 2024-01-24
+### Fixed
+- fix `ValidationError` Something went wrong. (400)
+
 ## v0.1.5 - 20230-10-07
 ### Fixed
 - fix `ValidationError` by upgrade model to `openai-4`

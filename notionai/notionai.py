@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import json
 import uuid
 
@@ -6,7 +7,7 @@ import requests
 
 from notionai.enums import PromptTypeEnum, ToneEnum, TopicEnum, TranslateLanguageEnum
 
-MODEL = "openai-4"
+MODEL = "default"
 API_URL = "https://www.notion.so"
 
 
@@ -43,6 +44,11 @@ class NotionAIBase(object):
             "spaceId": self.space_id,
             "isSpacePermission": self.is_space_permission,
             "context": content,
+            "inferenceReason": "writer",
+		    "aiSessionId": self._get_id(),
+		    "metadata": {
+			    "blockId": self._get_id(),
+		    }
         }
 
         headers = self._build_headers(self.token)
