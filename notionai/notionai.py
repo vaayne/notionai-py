@@ -45,10 +45,10 @@ class NotionAIBase(object):
             "isSpacePermission": self.is_space_permission,
             "context": content,
             "inferenceReason": "writer",
-		    "aiSessionId": self._get_id(),
-		    "metadata": {
-			    "blockId": self._get_id(),
-		    }
+            "aiSessionId": self._get_id(),
+            "metadata": {
+                "blockId": self._get_id(),
+            },
         }
 
         headers = self._build_headers(self.token)
